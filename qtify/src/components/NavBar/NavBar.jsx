@@ -7,47 +7,51 @@ import { showToast } from "../../config/helper-methods";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ data, logo = false, search = false, feedback = false }) => {
-	const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
-	const navigate = useNavigate();
+  const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-	const _toggleFeedBackModal = (value = false) => {
-		setIsFeedBackModalOpen(value);
-	};
+  const _toggleFeedBackModal = (value = false) => {
+    setIsFeedBackModalOpen(value);
+  };
 
-	const _onSuccess = () => {
-		// show toast
-		showToast("Feedback Submitted", "success");
-	};
+  const _onSuccess = () => {
+    // show toast
+    showToast("Feedback Submitted", "success");
+  };
 
-	return (
-		<div className={styles.wrapper}>
-			<nav className={styles.navbar}>
-				<div className={styles.logoWrapper} onClick={() => navigate(`/`)}>
-					{logo ? <Logo id={styles.logo} /> : null}
-				</div>
-				{search ? (
-					<div className={styles.searchWrapper}>
-						<SearchBar
-							placeholder="Search a album of your choice"
-							data={data}
-						/>
-					</div>
-				) : null}
+  return (
+    <div className={styles.wrapper}>
+      <nav className={styles.navbar}>
+        {/* Logo Section */}
+        <div className={styles.logoWrapper} onClick={() => navigate(`/`)}>
+          {logo ? <Logo id={styles.logo} /> : null}
+        </div>
 
-				{feedback ? (
-					<div
-						className={styles.nav_link}
-						onClick={() => _toggleFeedBackModal(true)}>
-						Feedback
-					</div>
-				) : null}
-			</nav>
-			<FeedBackModal
-				isOpen={isFeedBackModalOpen}
-				onSuccess={_onSuccess}
-				onDismiss={_toggleFeedBackModal}
-			/>
-		</div>
-	);
+        {/* Search Bar Section */}
+        {search ? (
+          <div className={styles.searchWrapper}>
+            <SearchBar placeholder="search" data={data} />
+          </div>
+        ) : null}
+
+        {/* Feedback Button Section */}
+        {feedback ? (
+          <button
+            className={styles.feedbackButton}
+            onClick={() => _toggleFeedBackModal(true)}
+            aria-label="Provide Feedback">
+            Feedback
+          </button>
+        ) : null}
+      </nav>
+
+      <FeedBackModal
+        isOpen={isFeedBackModalOpen}
+        onSuccess={_onSuccess}
+        onDismiss={_toggleFeedBackModal}
+      />
+    </div>
+  );
 };
+
 export default NavBar;
