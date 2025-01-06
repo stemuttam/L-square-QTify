@@ -1,64 +1,81 @@
 .wrapper {
-	background-color: var(--color-primary);
-	border: 2px solid var(--color-primary);
-	padding-top: 5px;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding-top: 5px;
 }
 
 #logo {
-	margin-right: 25px;
-	cursor: pointer;
+  margin-right: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .logoWrapper {
-	cursor: pointer;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Ensure vertical centering */
 }
 
 .navbar {
-	width: 90vw;
-	margin: auto auto;
-	height: 4.9333rem;
-	display: flex;
-	padding: 0;
-	align-items: center;
-	justify-content: space-between;
+  width: 90vw;
+  margin: auto;
+  height: 4.9333rem;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nav_link {
-	margin-left: 25px;
-	cursor: pointer;
-	background-color: var(--color-black);
-	border-radius: 10px;
-	border: none;
-	font-size: 16px;
-	color: var(--color-primary);
-	padding: 10px 20px;
+.searchWrapper {
+  flex-grow: 1; /* Ensure search bar takes available space */
+  margin: 0 15px;
 }
 
+.feedbackButton {
+  margin-left: 25px;
+  cursor: pointer;
+  background-color: var(--color-black); /* Black background */
+  border-radius: 10px; /* Rounded corners */
+  border: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif; /* Poppins font */
+  color: var(--color-green); /* Green text */
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth hover effect */
+}
+
+.feedbackButton:hover {
+  background-color: var(--color-black-hover); /* Optional hover background variant */
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 576px) {
-	.navbar {
-		height: auto;
-		padding: 1rem;
-		text-align: center;
-	}
+  .navbar {
+    height: auto;
+    padding: 1rem;
+    text-align: center;
+  }
 
-	.nav_link {
-		font-size: 16px;
-		padding: 10px 12px;
-		font-weight: 400;
-	}
+  .feedbackButton {
+    font-size: 16px;
+    padding: 10px 12px;
+    font-weight: 400;
+  }
 }
 
 @media only screen and (max-width: 913px) {
-	.navbar {
-		padding: 20px;
-	}
+  .navbar {
+    padding: 20px;
+  }
 
-	.nav_link {
-		font-size: 16px;
-		padding: 10px 20px;
-	}
+  .feedbackButton {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 
-	.wrapper .navbar .searchWrapper {
-		display: none;
-	}
+  .wrapper .navbar .searchWrapper {
+    display: none;
+  }
 }
