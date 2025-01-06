@@ -6,49 +6,40 @@ import FeedBackModal from "../Modals/FeedBackModal/FeedBackModal";
 import { showToast } from "../../config/helper-methods";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = ({ data, logo = false, search = false, feedback = false }) => {
-	const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
-	const navigate = useNavigate();
+const Navbar = ({ data, page, songsData }) => {
+  const [isFeedbackClicked, setIsFeedbackClicked] = useState(false);
 
-	const _toggleFeedBackModal = (value = false) => {
-		setIsFeedBackModalOpen(value);
-	};
+  const handleClick = () => {
+    setIsFeedbackClicked(!isFeedbackClicked);
+  };
 
-	const _onSuccess = () => {
-		// show toast
-		showToast("Feedback Submitted", "success");
-	};
+  useEffect(() => {
+    let feedback = document.getElementById("feedback");
+    let body = document.body;
+    if (isFeedbackClicked) {
+      body.style.overflowY = "hidden";
+      feedback?.classList.add("feedbackClicked");
+    } else {
+      body.style.overflowY = "auto";
+      feedback?.classList.remove("feedbackClicked");
+    }
+  }, [isFeedbackClicked]);
 
-	return (
-		<div className={styles.wrapper}>
-			<nav className={styles.navbar}>
-				<div className={styles.logoWrapper} onClick={() => navigate(`/`)}>
-					{logo ? <Logo id={styles.logo} /> : null}
-				</div>
-				{search ? (
-					<div className={styles.searchWrapper}>
-						<SearchBar
-							placeholder="Search a album of your choice"
-							data={data}
-						/>
-					</div>
-				) : null}
-
-				{feedback ? (
-					<div
-						className={styles.nav_link}
-						onClick={() => _toggleFeedBackModal(true)}>
-						Feedback
-					</div>
-				) : null}
-			</nav>
-			<FeedBackModal
-				isOpen={isFeedBackModalOpen}
-				onSuccess={_onSuccess}
-				onDismiss={_toggleFeedBackModal}
-			/>
-		</div>
-	);
+  return (
+    <>
+      {isFeedbackClicked && (
+        <Feedback onClose={() => setIsFeedbackClicked(false)} />
+      )}
+      <nav className={styles.nav}>
+        <Logo />
+        <Search data={page === "home" ? data : songsData} page={page} />
+        <Button
+          text="GIVE FEEDBACK"
+          eventHandler={{ event: "onClick", handler: handleClick }}
+        />
+      </nav>
+    </>
+  );
 };
 
 export default NavBar;
