@@ -1,81 +1,61 @@
 .wrapper {
   background-color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  padding-top: 5px;
-}
-
-#logo {
-  margin-right: 25px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.logoWrapper {
-  cursor: pointer;
-  display: flex;
-  align-items: center; /* Ensure vertical centering */
+  padding: 1rem;
 }
 
 .navbar {
   width: 90vw;
   margin: auto;
-  height: 4.9333rem;
   display: flex;
-  padding: 0;
-  align-items: center;
+  align-items: center; /* Ensures vertical centering */
   justify-content: space-between;
 }
 
-.searchWrapper {
-  flex-grow: 1; /* Ensure search bar takes available space */
-  margin: 0 15px;
+.logoWrapper {
+  display: flex;
+  align-items: center; /* Centers the logo vertically */
+  margin-left: 1rem; /* Adds space to the left */
+  cursor: pointer;
 }
 
-.feedbackButton {
-  margin-left: 25px;
+.searchWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navButton {
   cursor: pointer;
   background-color: var(--color-black); /* Black background */
-  border-radius: 10px; /* Rounded corners */
-  border: none;
-  font-size: 16px;
+  color: var(--color-green); /* Green text color */
   font-family: "Poppins", sans-serif; /* Poppins font */
-  color: var(--color-green); /* Green text */
-  padding: 10px 20px;
-  transition: background-color 0.3s, transform 0.3s; /* Smooth hover effect */
+  border: none;
+  border-radius: 8px; /* Adds border-radius */
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
 }
 
-.feedbackButton:hover {
-  background-color: var(--color-black-hover); /* Optional hover background variant */
-  cursor: pointer;
+.navButton:hover {
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  background-color: var(--color-dark-gray); /* Example hover effect */
+  transform: scale(1.05); /* Slightly enlarges button */
 }
 
-/* Responsive Adjustments */
 @media (max-width: 576px) {
   .navbar {
-    height: auto;
-    padding: 1rem;
+    flex-direction: column;
     text-align: center;
   }
 
-  .feedbackButton {
-    font-size: 16px;
-    padding: 10px 12px;
-    font-weight: 400;
+  .navButton {
+    font-size: 14px;
+    padding: 0.5rem 0.75rem;
   }
 }
 
-@media only screen and (max-width: 913px) {
-  .navbar {
-    padding: 20px;
-  }
-
-  .feedbackButton {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-
-  .wrapper .navbar .searchWrapper {
-    display: none;
+@media (max-width: 913px) {
+  .searchWrapper {
+    display: none; /* Hides search bar on smaller screens */
   }
 }
