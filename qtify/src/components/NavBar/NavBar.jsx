@@ -6,7 +6,7 @@ import FeedBackModal from "../Modals/FeedBackModal/FeedBackModal";
 import { showToast } from "../../config/helper-methods";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = ({ data, logo = true, search = true, feedback = true }) => {
+const NavBar = ({ data, logo = false, search = false, feedback = false }) => {
   const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const NavBar = ({ data, logo = true, search = true, feedback = true }) => {
         {logo && (
           <div
             className={styles.logoWrapper}
-            data-testid="logo-wrapper" /* For testing vertical centering and spacing */
+            data-testid="logo-wrapper" /* For testing */
             onClick={() => navigate(`/`)}
           >
             <Logo id={styles.logo} />
