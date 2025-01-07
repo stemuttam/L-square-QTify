@@ -7,55 +7,47 @@ import { showToast } from "../../config/helper-methods";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ data, logo = false, search = false, feedback = false }) => {
-  const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
-  const navigate = useNavigate();
+	const [isFeedBackModalOpen, setIsFeedBackModalOpen] = useState(false);
+	const navigate = useNavigate();
 
-  const _toggleFeedBackModal = (value = false) => {
-    setIsFeedBackModalOpen(value);
-  };
+	const _toggleFeedBackModal = (value = false) => {
+		setIsFeedBackModalOpen(value);
+	};
 
-  const _onSuccess = () => {
-    showToast("Feedback Submitted", "success");
-  };
+	const _onSuccess = () => {
+		// show toast
+		showToast("Feedback Submitted", "success");
+	};
 
-  return (
-    <div className={styles.wrapper}>
-      <nav className={styles.navbar}>
-        {logo && (
-          <div
-            className={styles.logoWrapper}
-            data-testid="logo-wrapper" /* For testing */
-            onClick={() => navigate(`/`)}
-          >
-            <Logo id={styles.logo} />
-          </div>
-        )}
-        {search && (
-          <div className={styles.searchWrapper}>
-            <SearchBar
-              placeholder="search"
-              data={data}
-              data-testid="search-bar" /* For testing placeholder */
-            />
-          </div>
-        )}
-        {feedback && (
-          <button
-            className={styles.navButton}
-            data-testid="feedback-button" /* For testing button styles */
-            onClick={() => _toggleFeedBackModal(true)}
-          >
-            Feedback
-          </button>
-        )}
-      </nav>
-      <FeedBackModal
-        isOpen={isFeedBackModalOpen}
-        onSuccess={_onSuccess}
-        onDismiss={_toggleFeedBackModal}
-      />
-    </div>
-  );
+	return (
+		<div className={styles.wrapper}>
+			<nav className={styles.navbar}>
+				<div className={styles.logoWrapper} onClick={() => navigate(/)}>
+					{logo ? <Logo id={styles.logo} /> : null}
+				</div>
+				{search ? (
+					<div className={styles.searchWrapper}>
+						<SearchBar
+							placeholder="Search a album of your choice"
+							data={data}
+						/>
+					</div>
+				) : null}
+
+				{feedback ? (
+					<div
+						className={styles.nav_link}
+						onClick={() => _toggleFeedBackModal(true)}>
+						Feedback
+					</div>
+				) : null}
+			</nav>
+			<FeedBackModal
+				isOpen={isFeedBackModalOpen}
+				onSuccess={_onSuccess}
+				onDismiss={_toggleFeedBackModal}
+			/>
+		</div>
+	);
 };
-
 export default NavBar;
