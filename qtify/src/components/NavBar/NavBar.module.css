@@ -1,61 +1,64 @@
 .wrapper {
-  background-color: var(--color-primary);
-  padding: 1rem;
+	background-color: var(--color-primary);
+	border: 2px solid var(--color-primary);
+	padding-top: 5px;
 }
 
-.navbar {
-  width: 90vw;
-  margin: auto;
-  display: flex;
-  align-items: center; /* Ensures vertical centering */
-  justify-content: space-between;
+#logo {
+	margin-right: 25px;
+	cursor: pointer;
 }
 
 .logoWrapper {
-  display: flex;
-  align-items: center; /* Centers the logo vertically */
-  margin-left: 1rem; /* Adds space to the left */
-  cursor: pointer;
+	cursor: pointer;
 }
 
-.searchWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+.navbar {
+	width: 90vw;
+	margin: auto auto;
+	height: 4.9333rem;
+	display: flex;
+	padding: 0;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.navButton {
-  cursor: pointer;
-  background-color: var(--color-black); /* Black background */
-  color: var(--color-green); /* Green text color */
-  font-family: "Poppins", sans-serif; /* Poppins font */
-  border: none;
-  border-radius: 8px; /* Adds border-radius */
-  font-size: 16px;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
-}
-
-.navButton:hover {
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  background-color: var(--color-dark-gray); /* Example hover effect */
-  transform: scale(1.05); /* Slightly enlarges button */
+.nav_link {
+	margin-left: 25px;
+	cursor: pointer;
+	background-color: var(--color-black);
+	border-radius: 10px;
+	border: none;
+	font-size: 16px;
+	color: var(--color-primary);
+	padding: 10px 20px;
 }
 
 @media (max-width: 576px) {
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
+	.navbar {
+		height: auto;
+		padding: 1rem;
+		text-align: center;
+	}
 
-  .navButton {
-    font-size: 14px;
-    padding: 0.5rem 0.75rem;
-  }
+	.nav_link {
+		font-size: 16px;
+		padding: 10px 12px;
+		font-weight: 400;
+	}
 }
 
-@media (max-width: 913px) {
-  .searchWrapper {
-    display: none; /* Hides search bar on smaller screens */
-  }
+@media only screen and (max-width: 913px) {
+	.navbar {
+		padding: 20px;
+	}
+
+	.nav_link {
+		font-size: 16px;
+		padding: 10px 20px;
+	}
+
+	.wrapper .navbar .searchWrapper {
+		display: none;
+	}
 }
