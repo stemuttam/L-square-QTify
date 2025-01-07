@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../Logo/Logo";
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
 import SearchBar from "../SearchBar/SearchBar";
 import FeedBackModal from "../Modals/FeedBackModal/FeedBackModal";
 import { showToast } from "../../config/helper-methods";
